@@ -1,0 +1,8 @@
+{
+  "bot_master_configs": {
+    "slack_bot_id": "please enter slack bot id here"
+  },
+  "git_master_configs": {
+    "git_hub_dev_token":"please enter git hub dev token here"
+  }
+}
