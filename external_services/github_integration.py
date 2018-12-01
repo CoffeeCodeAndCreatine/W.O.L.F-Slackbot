@@ -18,11 +18,12 @@ def get_github_info_message_string(message):
         pull_request_list = get_pull_requests("all")
         message_string = "I have found " + str(len(pull_request_list)) + " pull requests"
 
-    message_string = message_string + "\n```"
-    for pull_request in pull_request_list:
-        message_string = message_string + pull_request.get("user") + ": " + pull_request.get("url") + "\n"
+    if len(pull_request_list) > 0:
+        message_string = message_string + "\n```"
+        for pull_request in pull_request_list:
+            message_string = message_string + pull_request.get("user") + ": " + pull_request.get("url") + "\n"
 
-    message_string = message_string + "\n```"
+        message_string = message_string + "\n```"
     return message_string
 
 
