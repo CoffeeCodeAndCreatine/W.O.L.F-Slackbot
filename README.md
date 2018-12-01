@@ -48,8 +48,8 @@ At a high level, the steps you will need to take to get this set up are listed b
 3. Enable OAuth for the bot user
 4. Grant the bot user chat:write:bot scope
 5. Enable event subscriptions
-6. Grant the subscribe to bot events the message.channels scope
-7. Copy the slack bot token and the slack signing secret to the configs.json file
+6. Grant the subscribe to bot events the app_mention and message.im scope
+7. Configure the configs ans secrets files
 8. In terminal session a, launch ngrok 
     ```bash
     ./ngrok http 3000
@@ -57,16 +57,25 @@ At a high level, the steps you will need to take to get this set up are listed b
 9. In terminal session b, launch the slack bot
     ```bash
     pip3 install -r requirements.txt
-    python3 slackbot_events_api_example.py
+    python3 wolf.py
     ```
 10. Now you should be able to go to the slack app, invite the bot and then send a message
     ```bash
-    /invite @slackbot_events_api_example
-    @slackbot_events_api_example BOT TEST
+    /invite @wolf
+    @wolf help
     ```
-11. If everything went to play the bot should respond with the following
+11. If everything went to plan the bot should respond with the following
     ```bash
-    Responding to `BOT TEST` message sent by user @yourUserName
+        I am The Slack Wolf. Here to help with little tasks here and there, but doing my best to stay our of your way. Right now I have a few commands I can answer to. They are as follows:
+
+        help: I'll give you a list of things I can do.
+        pr list: I'll give you a list of all open pull requests.
+        approved pr list: I'll give you a list of all open pull requests that have been approved.
+        open pr list: I'll give you a list of all open pull requests that have not been approved.
+        pager duty: I'll tell you who is primary and secondary on call for the Ranking team.
+        X Y names please: Random name generator, X is the amount of names, Y is the first letter.
+
+        Thanks for reading, as of now that is all I can do, but if you would like me to learn something new please reach out to handler.
     ```
 
 
