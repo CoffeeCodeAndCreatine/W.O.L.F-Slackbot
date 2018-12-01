@@ -1,0 +1,42 @@
+{
+  "respond_to_mention": {
+    "enable": true
+  },
+  "respond_to_direct_message": {
+    "enable": true
+  },
+  "git_hub": {
+    "enable": true,
+    "features": [
+      {
+        "name": "all_pull_requests",
+        "enable": true
+      },
+      {
+        "name": "approved_pull_requests",
+        "enable": true
+      },
+      {
+        "name": "open_pull_requests",
+        "enable": true
+      }
+    ]
+  },
+  "pager_duty": {
+    "enable": true,
+    "features": [
+      {
+        "name": "show_primary",
+        "enable": true
+      },
+      {
+        "name": "show_secondary",
+        "enable": true
+      }
+    ]
+
+  },
+  "yafnag": {
+    "enable": true
+  }
+}
