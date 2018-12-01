@@ -5,7 +5,7 @@
   "cached_response": {
     "enable": true
   },
-  "git_hub": {
+  "github": {
     "enable": true,
     "github_repos": [],
     "github_org": "",

@@ -44,20 +44,20 @@ def handle_message(event_data):
 
     # check to see if this is a direct match to an utterance we know how to handle
     if message.get("subtype") is None and clean_message in known_utterances.known_utterances:
-        utterance_handler.known_utterance_handler(slack_client, message, channel)
+        utterance_handler.known_utterance_handler(slack_client, clean_message, channel)
 
     # check to see if this is a direct match to an easter egg
     elif message.get("subtype") is None and clean_message in easter_eggs.easter_eggs and wolf_configs.get(
             "easter_eggs").get("enable"):
-        utterance_handler.easter_egg_handler(slack_client, message, channel)
+        utterance_handler.easter_egg_handler(slack_client, clean_message, channel)
 
     # check to see if this matches a reg ex, which will be a bit slower
     elif message.get("subtype") is None and re.match(patterns, clean_message):
-        utterance_handler.known_regex_handler(slack_client, message, channel)
+        utterance_handler.known_regex_handler(slack_client, clean_message, channel)
 
     # return an "I dont know" response
     elif message.get("subtype") is None and wolf_configs.get("cached_response").get("enable"):
-        utterance_handler.cached_response_handler(channel)
+        utterance_handler.cached_response_handler(slack_client, channel)
 
 
 @slack_events_adapter.on("error")

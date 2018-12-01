@@ -11,7 +11,7 @@ def get_names_message_string(message):
     names_list = get_names(message)
     message_string = "Here is the list of names:\n```\n"
     for name in names_list:
-        message_string = message_string + "\t" + name + "\n"
+        message_string = message_string + name + "\n"
 
     message_string = message_string + "```"
     return message_string
@@ -22,7 +22,7 @@ def get_names(message):
     number_of_names = words[0]
     first_letter_of_names = words[1]
 
-    if number_of_names > 10:
+    if int(number_of_names) > 10:
         number_of_names == 10
 
     return yafnag_rest_call(first_letter_of_names, number_of_names)

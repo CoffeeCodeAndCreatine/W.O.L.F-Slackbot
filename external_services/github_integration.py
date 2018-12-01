@@ -10,13 +10,13 @@ def get_github_info_message_string(message):
 
     if "approved" in message:
         pull_request_list = get_pull_requests("approved")
-        message_string = "I have found " + len(pull_request_list) + " approved pull requests"
-    if "open" in message:
+        message_string = "I have found " + str(len(pull_request_list)) + " approved pull requests"
+    elif "open" in message:
         pull_request_list = get_pull_requests("open")
-        message_string = "I have found " + len(pull_request_list) + " open pull requests"
+        message_string = "I have found " + str(len(pull_request_list)) + " open pull requests"
     else:
         pull_request_list = get_pull_requests("all")
-        message_string = "I have found " + len(pull_request_list) + " pull requests"
+        message_string = "I have found " + str(len(pull_request_list)) + " pull requests"
 
     message_string = message_string + "\n```"
     for pull_request in pull_request_list:

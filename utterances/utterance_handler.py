@@ -24,7 +24,7 @@ def known_utterance_handler(slack_client, message, channel):
 def get_utterance_response(message, utterance_type):
     if utterance_type == "help":
         return cached_responses.help_response
-    if utterance_type == "pull_requests" and configs.get("git_hub").get("enable"):
+    if utterance_type == "pull_requests" and configs.get("github").get("enable"):
         return github_integration.get_github_info_message_string(message)
     if utterance_type == "support" and configs.get("pager_duty").get("enable"):
         return pager_duty_integration.get_pager_info_message_string(message)
