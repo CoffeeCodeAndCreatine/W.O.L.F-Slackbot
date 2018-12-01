@@ -16,6 +16,7 @@ from external_services import yafnag_integration
 app = Flask(__name__)
 
 wolf_slack_secrets = secret_loader.load_secrets().get("slack")
+wolf_configs = config_loader.load_configs()
 slack_events_adapter = SlackEventAdapter(wolf_slack_secrets.get("slack_signing_secret"), "/slack/events", app)
 slack_client = SlackClient(wolf_slack_secrets.get("slack_bot_token"))
 patterns = yafnag_integration.regex_compiler(known_regexs.known_regexs)
@@ -28,7 +29,7 @@ def alive():
 
 @app.route("/configs")
 def configs():
-    return jsonify(config_loader.load_configs())
+    return jsonify(wolf_configs)
 
 
 @slack_events_adapter.on("app_mention") #subscribe to app mentions
@@ -47,7 +48,7 @@ def handle_message(event_data):
         utterance_handler.known_utterance_handler(slack_client, message, channel)
 
     #check to see if this is a direct match to an easter egg
-    elif message.get("subtype") is None and clean_message in easter_eggs.easter_eggs:
+    elif message.get("subtype") is None and clean_message in easter_eggs.easter_eggs and wolf_configs.get("easter_eggs").get("enable"):
         utterance_handler.easter_egg_handler(slack_client, message, channel)
 
     #check to see if this matches a reg ex, which will be a bit slower
@@ -55,7 +56,7 @@ def handle_message(event_data):
         utterance_handler.known_regex_handler(slack_client, message, channel)
 
     #return an "I dont know" response
-    elif message.get("subtype") is None:
+    elif message.get("subtype") is None and wolf_configs.get("cached_response").get("enable"):
         utterance_handler.cached_response_handler(channel)
 
 

@@ -1,8 +1,8 @@
 {
-  "respond_to_mention": {
+  "easter_eggs": {
     "enable": true
   },
-  "respond_to_direct_message": {
+  "cached_response": {
     "enable": true
   },
   "git_hub": {
@@ -11,36 +11,12 @@
     "github_org":"",
     "base_url": "https://api.github.com/repos/",
     "tail_url": "/pulls?state=open",
-    "features": [
-      {
-        "name": "all_pull_requests",
-        "enable": true
-      },
-      {
-        "name": "approved_pull_requests",
-        "enable": true
-      },
-      {
-        "name": "open_pull_requests",
-        "enable": true
-      }
-    ]
   },
   "pager_duty": {
     "enable": true,
     "authorization_prefix": "Token token=",
     "accept_type": "application/vnd.pagerduty+json;version=2",
-    "base_url": "https://api.pagerduty.com/oncalls?include%5B%5D=users&escalation_policy_ids%5B%5D={}&schedule_ids%5B%5D={}",
-    "features": [
-      {
-        "name": "show_primary",
-        "enable": true
-      },
-      {
-        "name": "show_secondary",
-        "enable": true
-      }
-    ]
+    "base_url": "https://api.pagerduty.com/oncalls?include%5B%5D=users&escalation_policy_ids%5B%5D={}&schedule_ids%5B%5D={}"
 
   },
   "yafnag": {
