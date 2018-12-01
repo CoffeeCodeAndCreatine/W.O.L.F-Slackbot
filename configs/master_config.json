@@ -7,6 +7,10 @@
   },
   "git_hub": {
     "enable": true,
+    "github_repos": [],
+    "github_org":"",
+    "base_url": "https://api.github.com/repos/",
+    "tail_url": "/pulls?state=open",
     "features": [
       {
         "name": "all_pull_requests",
@@ -24,6 +28,9 @@
   },
   "pager_duty": {
     "enable": true,
+    "authorization_prefix": "Token token=",
+    "accept_type": "application/vnd.pagerduty+json;version=2",
+    "base_url": "https://api.pagerduty.com/oncalls?include%5B%5D=users&escalation_policy_ids%5B%5D={}&schedule_ids%5B%5D={}",
     "features": [
       {
         "name": "show_primary",
@@ -37,6 +44,9 @@
 
   },
   "yafnag": {
-    "enable": true
+    "enable": true,
+    "min_character_count": 1,
+    "max_character_count": 10,
+    "base_url": "https://dicelog.com:443/yaroll"
   }
 }
