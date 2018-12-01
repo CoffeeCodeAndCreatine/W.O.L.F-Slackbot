@@ -25,6 +25,7 @@ def get_github_info_message_string(message):
     message_string = message_string + "\n```"
     return message_string
 
+
 def get_pull_requests(type):
     github_configs = config_loader.load_configs().get("github")
     github_secrets = secret_loader.load_secrets().get("github")
@@ -32,7 +33,8 @@ def get_pull_requests(type):
     response_json = []
     headers = {"Authorization": github_secrets.get("github_token")}
     for repo in github_configs.get("github_repos"):
-        url_string = github_configs.get("base_url") + github_configs.get("github_org") + "/" + repo + github_configs.get("tail_url")
+        url_string = github_configs.get("base_url") + github_configs.get(
+            "github_org") + "/" + repo + github_configs.get("tail_url")
         resp = requests.get(url_string, headers=headers, verify=False)
         repo_pulls = resp.json()
         for repo_pull in repo_pulls:
@@ -66,5 +68,3 @@ def get_pull_request_status(git_hub_token, url):
         else:
             return False
     return False
-
-

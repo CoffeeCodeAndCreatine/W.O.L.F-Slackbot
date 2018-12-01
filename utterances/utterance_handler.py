@@ -12,6 +12,7 @@ from configs import config_loader
 
 configs = config_loader.load_configs()
 
+
 def known_utterance_handler(slack_client, message, channel):
     for entry in known_utterances.utterance_types:
         if entry.get("utterance") in message:
@@ -42,9 +43,11 @@ def get_regex_response(message, handler):
     if handler == "yafnag" and configs.get("yafnag").get("enable"):
         return yafnag_integration.get_names_message_string(message)
 
+
 def easter_egg_handler(slack_client, message, channel):
     slack_client.api_call("chat.postMessage", channel=channel, text=easter_eggs.easter_eggs.get(message))
 
 
 def cached_response_handler(slack_client, channel):
-    slack_client.api_call("chat.postMessage", channel=channel, text=cached_responses.confused[random.randrange(len(cached_responses.confused))])
+    slack_client.api_call("chat.postMessage", channel=channel,
+                          text=cached_responses.confused[random.randrange(len(cached_responses.confused))])

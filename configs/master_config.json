@@ -8,16 +8,15 @@
   "git_hub": {
     "enable": true,
     "github_repos": [],
-    "github_org":"",
+    "github_org": "",
     "base_url": "https://api.github.com/repos/",
-    "tail_url": "/pulls?state=open",
+    "tail_url": "/pulls?state=open"
   },
   "pager_duty": {
     "enable": true,
     "authorization_prefix": "Token token=",
     "accept_type": "application/vnd.pagerduty+json;version=2",
     "base_url": "https://api.pagerduty.com/oncalls?include%5B%5D=users&escalation_policy_ids%5B%5D={}&schedule_ids%5B%5D={}"
-
   },
   "yafnag": {
     "enable": true,
